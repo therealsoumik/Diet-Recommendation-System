@@ -1,241 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>BMI Calculator</title>
+	</head>
+	<style media="screen">
+		body{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-family: sans-serif;
+			background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+			min-height: 100vh;
+		}
+		div{
+			width: 500px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #fff;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 20px #ee5253;
+		}
+		h2{
+			font-size: 30px;
+			font-weight: 600;
+		}
+		.text{
+			text-align: left;
+			margin-left: 150px;
+		}
+		#w, #h{
+			color: #222f3e;
+			text-align: left;
+			font-size: 20px;
+			font-weight: 200;
+			outline: none;
+			border: none;
+			background: none;
+			border-bottom: 1px solid #341f97;
+			width: 200px;
+		}
+			#w:focus, #h:focus{
+				border-bottom: 2px solid #341f97;
+				width: 300px;
+				transition: 0.5s;
+			}
+			#result{
+				color: #341f97;
+			}
+			#btn{
+				font-family: inherit;
+				margin-top: 10px;
+				border: none;
+				color: #fff;
+				background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+				width: 150px;
+				padding: 10px;
+				border-radius: 30px;
+				outline: none;
+				cursor: pointer;
+			}
+			#btn:hover{
+				box-shadow: 1px 1px 10px #341f97;
+			}
+			#info{
+				font-size: 12px;
+				font-family: inherit;
+			}
+	</style>
+	<script type="text/javascript">
+		function BMI() {
+			var h=document.getElementById('h').value;
+			var w=document.getElementById('w').value;
+			var bmi=w/(h/100*h/100);
+			var bmio=(bmi.toFixed(2));
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Bot</title>
-
-    <link rel="stylesheet" href="static/css/chat.css">
-    <link rel="stylesheet" href="static/css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    
-    
-    
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("D8Wt6fR0B42w6pc6I");
-   })();
-</script>
-
-</head>
-
-<body>
-    <header class="header" id="header">
-            <nav class="nav">
-                
-                <div class="advice">
-                   <a href="#" class="nav__logo"><span>S</span>martHealth.org</a>
-                    <div class="advice__text">
-                        <p><span>T</span>rusted medical advice</p>
-                    </div>
-                    <div class="social__icons">
-                        <i class="uil uil-twitter-alt"></i>
-                        <i class="uil uil-facebook-f"></i>
-                    </div>
-                    <div class="boxContainer">
-                        <table class="elementsContainer">
-                            <tr>
-                                <td>
-                                    <input type="text" placeholder="Search" class="search">
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <i class="uil uil-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">
-                                <i class="uil uil-estate nav__icon"></i> Health Condition A-Z
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">
-                                <i class="uil uil-user nav__icon"></i> Wellness
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link">
-                                <i class="uil uil-file-alt nav__icon"></i> Food & Diet
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="static/BMI-CALCULATOR-master/index.html" target="_blank" class="nav__link">
-                                <i class="uil uil-dumbbell nav__icon"></i> BMI
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#portfolio" class="nav__link">
-                                <i class="uil uil-mobile-android"></i> Smart Health
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link">
-                                <i class="uil uil-message nav__icon"></i> Contact us
-                            </a>
-                        </li>
-
-
-                    </ul>
-                    
-                </div>    
-                
-            </nav>
-        </header>
-        
-        <section class="know">
-            
-            <div class="heading">
-                <h2><i class="uil uil-rss"></i>Explore health topics</h2>
-                <h4><i class="uil uil-shield-plus"></i>Health Conditions</h4>
-            </div>
-            
-            <div class="information">
-                
-                <div class="info1">
-                    <div class="img1">
-                        <img src="static/img/Cancer.jpg">
-                    </div>
-                    
-                    <div class="text1">
-                        <h2>Cancer</h2>
-                        <p>Find out about the steps you can take to prevent cancer</p>
-                    </div>
-                    
-                </div>
-                
-                <div class="info2">
-                    <div class="img2">
-                        <img src="static/img/Diabetes.jpg">
-                    </div>
-                    
-                    <div class="text2">
-                        <h2>Diabetes</h2>
-                        <p>You can do a lot to lower your risk of diabetes.Start Now!</p>
-                    </div>
-                </div>
-                
-                <div class="info3">
-                    <div class="img3">
-                        <img src="static/img/Heart%20Disease.jpg">
-                    </div>
-                    
-                    <div class="text3">
-                        <h2>Health Heart</h2>
-                        <p>Keep your heart healthy and lower the risk of an attack</p>
-                    </div>
-                </div>
-                <div class="show">
-                    <div class="condi" id="blur">
-                        <button type="submit" class="btn" onclick="toggle()"><nobr>View more</nobr></button>
-                    </div>
-                    <div id="popup">
-                        
-                        <div class="img4" align="center">
-                            <img src="static/img/Obesity.jpg">
-                        </div>
-                        
-                        <div class="text4">
-                            <h2>Overweight</h2>
-                            <p>Overweight and obesity put people at risk for serious health conditions like type 2 diabetes and heart disease. If you need to lose weight, do it slowly over time.</p>
-                            <button type="button" onclick="toggle()">Read more</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-        
-        
-    
-    <!-- CHAT BAR BLOCK -->
-    <div class="chat-bar-collapsible">
-        <button id="chat-button" type="button" class="collapsible">Seek your truth!
-            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
-        </button>
-
-        <div class="content">
-            <div class="full-chat-block">
-                <!-- Message Container -->
-                <div class="outer-container">
-                    <div class="chat-container">
-                        <!-- Messages -->
-                        <div id="chatbox">
-                            <h5 id="chat-timestamp"></h5>
-                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                            <p id="botStarterMessage2" class="botText dis1"><span>Loading...</span></p>
-                            <p id="botStarterMessage3" class="botText dis1"><span>Loading...</span></p>
-                        </div>
-
-                        <!-- User input box -->
-                        <div class="chat-bar-input-block">
-                            <div id="userInput">
-                                <input id="textInput" class="input-box" type="text" name="msg"
-                                    placeholder="Tap 'Enter' to send a message">
-                                <p></p>
-                            </div>
-
-                            <div class="chat-bar-icons">
-                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
-                                    onclick="heartButton()"></i>
-                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
-                                    onclick="sendButton()"></i>
-                            </div>
-                        </div>
-
-                        <div id="chat-bar-bottom">
-                            <p></p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    
-    <section class="contact form" id="contact">
-        <div class="containers border mt-3 bg-light">
-            <div class="row">
-                
-                <div class="col-md-6 border-left py-3" align="center">
-                    <h1>Contact form</h1>
-                    <div class="form-group">
-                        <h5 for="name">Name</h5>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <h5 for="email">Email</h5>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <h5 for="message">Message</h5>
-                        <textarea id="message" rows="30" class="form-control"></textarea>
-                    </div>
-                    <button class="btns btn-primary">Submit</button>
-                </div>    
-            </div>
-        </div>
-    </section>
-
-
-</body>
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="static/scripts/responses.js"></script>
-<script src="static/scripts/chat.js"></script>
-
+			document.getElementById("result").innerHTML="Your BMI is " + bmio;
+		}
+	</script>
+	<body>
+		<div>
+			<h2>BMI Calculator</h2>
+			<p class="text">Height</p>
+			<input type="text" id="h">
+			<p class="text">Weight</p>
+			<input type="text" id="w">
+			<p id="result"></p>
+			<button id="btn" onClick="BMI()">Calculate</button>
+			<p id="info">Please enter height [cm] and weight [kg]</p>
+		</div>
+	</body>
 </html>
